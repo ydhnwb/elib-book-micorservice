@@ -40,7 +40,7 @@ func (ctl *bookCreateUseCase) CreateBook(ctx *gin.Context) {
 		helper.BuildErrorResponse(http.StatusBadRequest, e.Error(), helper.EmptyObj{}, ctx)
 		return
 	}
-	ctl.bookRepository.InsertBook(book)
-	helper.BuildResponse(http.StatusCreated, book, ctx)
+	result := ctl.bookRepository.InsertBook(book)
+	helper.BuildResponse(http.StatusCreated, result, ctx)
 
 }
